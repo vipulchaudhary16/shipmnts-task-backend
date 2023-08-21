@@ -11,7 +11,7 @@ const addQuestion = async (req, res) => {
 			tags,
 		});
 		await newQuestion.save();
-		res.status(200).send(newQuestion);
+		res.status(201).send(newQuestion);
 	} catch (error) {
 		console.log(error);
 		res.status(500).send('Internal server error');
@@ -79,6 +79,14 @@ const getQuestions = async (req, res) => {
 				$unwind: '$questionByUser',
 			},
 			{
+				$lookup: {
+					from: 'comments',
+					localField: '_id',
+					foreignField: 'questionId',
+					as: 'comments',
+				},
+			},
+			{
 				$project: {
 					_id: 1,
 					question: 1,
@@ -87,6 +95,7 @@ const getQuestions = async (req, res) => {
 					addedAt: 1,
 					'questionByUser._id': 1,
 					'questionByUser.userName': 1,
+					comments: 1,
 				},
 			},
 		];

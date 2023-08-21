@@ -66,7 +66,21 @@ const deleteQuestion = async (req, res) => {
 
 const getQuestions = async (req, res) => {
 	try {
+		const { q, tags } = req.query;
+		const tagsArray = tags.toString().split(',');
+		console.log(tagsArray);
 		const pipeline = [
+			{
+				$match: {
+					question: {
+						$regex: q ?? ' ',
+						$options: 'i',
+					},
+					tags: {
+						$in: tagsArray,
+					},
+				},
+			},
 			{
 				$lookup: {
 					from: 'users',
@@ -84,6 +98,11 @@ const getQuestions = async (req, res) => {
 					localField: '_id',
 					foreignField: 'questionId',
 					as: 'comments',
+				},
+			},
+			{
+				$sort: {
+					question: 1,
 				},
 			},
 			{

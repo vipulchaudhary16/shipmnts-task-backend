@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "96cb203b-e310-4a8c-b2bb-12b835b05c5a",
+		"name": "Stack overflow clone API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16310010",
+		"_collection_link": "https://www.postman.com/speeding-resonance-436840/workspace/shipmnts/collection/16310010-96cb203b-e310-4a8c-b2bb-12b835b05c5a?action=share&source=collection_link&creator=16310010"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\" : \"vipulr\",\n    \"email\": \"vipulr6111@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/user/register",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						},
+						"description": "User can register to the system"
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\" : \"vipulr\",\n    \"email\": \"vipulr6111@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/user/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						},
+						"description": "LogIn into the system, it will return a token"
+					},
+					"response": []
+				}
+			],
+			"description": "User requests"
+		},
+		{
+			"name": "Question",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlMzAwMDM2ODQ3MzllNjEwNTZjYWFmIn0sImlhdCI6MTY5MjU5ODQ0OX0.NUvmPBJu2RqBXg5Oz_quLkaUE6e5cg48Mcsd5tF6HI8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"question\" : \"abba dabba jabba is span?\",\n   \"tags\": [\"react\", \"HTML\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/question/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"question",
+								"add"
+							]
+						},
+						"description": "User can add a new question"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlMzAwMDM2ODQ3MzllNjEwNTZjYWFmIn0sImlhdCI6MTY5MjU5ODQ0OX0.NUvmPBJu2RqBXg5Oz_quLkaUE6e5cg48Mcsd5tF6HI8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"question\" : \"what is env file in react app?\",\n   \"tags\": [\"react\", \"API\", \"vite\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/question/update/64e304b2eda9d540cbbeaa80",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"question",
+								"update",
+								"64e304b2eda9d540cbbeaa80"
+							]
+						},
+						"description": "User can update a question only if that belongs to him else unauthorised"
+					},
+					"response": []
+				},
+				{
+					"name": "Vote",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlMzAwMDM2ODQ3MzllNjEwNTZjYWFmIn0sImlhdCI6MTY5MjU5ODQ0OX0.NUvmPBJu2RqBXg5Oz_quLkaUE6e5cg48Mcsd5tF6HI8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"question\" : \"what is env file in react app?\",\n   \"tags\": [\"react\", \"API\", \"vite\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/question/vote/64e3040cb4d4b5f9b5f3f1b1?type=downvote",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"question",
+								"vote",
+								"64e3040cb4d4b5f9b5f3f1b1"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "upvote",
+									"description": "to upvote",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "downvote",
+									"description": "to downvote"
+								}
+							]
+						},
+						"description": "User can upvote or downvote the question"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlMzAwMDM2ODQ3MzllNjEwNTZjYWFmIn0sImlhdCI6MTY5MjU5ODQ0OX0.NUvmPBJu2RqBXg5Oz_quLkaUE6e5cg48Mcsd5tF6HI8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/question/delete/64e304b2eda9d540cbbeaa80",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"question",
+								"delete",
+								"64e304b2eda9d540cbbeaa80"
+							]
+						},
+						"description": "User can delete request if it belongs to him only"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Questions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlMzAwMDM2ODQ3MzllNjEwNTZjYWFmIn0sImlhdCI6MTY5MjU5ODQ0OX0.NUvmPBJu2RqBXg5Oz_quLkaUE6e5cg48Mcsd5tF6HI8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/question/all-questions?tags=react,HTML",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"question",
+								"all-questions"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "span",
+									"description": "query string for searching",
+									"disabled": true
+								},
+								{
+									"key": "tags",
+									"value": "react,HTML",
+									"description": "tags for filtering"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Operations on questions"
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlMzAwMDM2ODQ3MzllNjEwNTZjYWFmIn0sImlhdCI6MTY5MjU5ODQ0OX0.NUvmPBJu2RqBXg5Oz_quLkaUE6e5cg48Mcsd5tF6HI8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\" : \"Good question bro!\",\n    \"questionId\" : \"64e3040cb4d4b5f9b5f3f1b1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/comment/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"add"
+							]
+						},
+						"description": "user can add answer or comment on question"
+					},
+					"response": []
+				},
+				{
+					"name": "Vote",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlMzAwMDM2ODQ3MzllNjEwNTZjYWFmIn0sImlhdCI6MTY5MjU5ODQ0OX0.NUvmPBJu2RqBXg5Oz_quLkaUE6e5cg48Mcsd5tF6HI8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\" : \"Good question!\",\n    \"questionId\" : \"64e3040cb4d4b5f9b5f3f1b1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/comment/vote/64e31146cec6748ce8b265e5?type=downvote",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"vote",
+								"64e31146cec6748ce8b265e5"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "upvote",
+									"description": "to upvore the comment",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "downvote",
+									"description": "to downvote the comment"
+								}
+							]
+						},
+						"description": "User can vote on the comment"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

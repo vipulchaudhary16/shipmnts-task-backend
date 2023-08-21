@@ -15,6 +15,10 @@ const Comment = new mongoose.Schema({
 		ref: 'User',
 		required: true,
 	},
+	votes: {
+		type: Number,
+		default: 0,
+	},
 	addedAt: {
 		type: Date,
 		default: Date.now,
